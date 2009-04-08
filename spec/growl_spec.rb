@@ -26,6 +26,12 @@ describe Growl do
     it "should accept a hash" do
       Growl :message => 'Invoked via Growl with hash', :icon => 'jpeg', :title => 'Growl'
     end
+    
+    it "should return nil when not installed" do
+      Growl.stub!(:installed?).and_return(false)
+      Growl.new.should be_nil
+      lambda { Growl :message => 'I should never show :)' }.should_not raise_error
+    end
   end
   
   describe "#run" do

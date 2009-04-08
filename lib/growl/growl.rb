@@ -26,7 +26,7 @@ module Growl
   # Return the version triple of the binary.
   
   def version
-    `#{BIN} --version`.split[1]
+    @version ||= `#{BIN} --version`.split[1]
   end
   
   ##
@@ -37,9 +37,10 @@ module Growl
   end
   
   ##
-  # Return an instance of Growl::Base.
+  # Return an instance of Growl::Base or nil when not installed.
   
   def new *args, &block
+    return unless installed?
     Base.new *args, &block
   end
   
@@ -138,5 +139,6 @@ module Growl
 end
 
 def Growl options = {}, &block
+  return unless Growl.installed?
   Growl.new(options, &block).run
 end
