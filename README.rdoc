@@ -27,6 +27,10 @@ Ruby growlnotify 'bindings'.
     n.stick!
   end
 
+  # OR
+
+  Growl :message => 'Invoked via Growl with hash', :icon => 'jpeg', :title => 'Growl
+
 == Features
 
 * Check availability with Growl#installed?

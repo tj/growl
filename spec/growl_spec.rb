@@ -22,6 +22,10 @@ describe Growl do
     it "should accept a block, running immediately after" do
       Growl { |n| n.message = 'Invoked via Growl' }
     end
+    
+    it "should accept a hash" do
+      Growl :message => 'Invoked via Growl with hash', :icon => 'jpeg', :title => 'Growl'
+    end
   end
   
   describe "#run" do

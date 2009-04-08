@@ -54,13 +54,17 @@ module Growl
     # Initialize with optional +block+, which is then
     # instance evaled or yielded depending on the blocks arity.
     
-    def initialize &block
+    def initialize options = {}, &block
       @args = []
       if block_given?
         if block.arity > 0
           yield self
         else
           self.instance_eval &block
+        end
+      else
+        options.each do |key, value|
+          send :"#{key}=", value
         end
       end
     end
@@ -133,6 +137,6 @@ module Growl
 
 end
 
-def Growl *args, &block
-  Growl.new(*args, &block).run
+def Growl options = {}, &block
+  Growl.new(options, &block).run
 end
