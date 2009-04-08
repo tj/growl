@@ -1,4 +1,8 @@
 
+=== 0.0.5 / 2009-04-08
+
+* Now returning nil when trying to instantiate Growl when not installed
+
 === 0.0.4 / 2009-04-08
 
 * We dont want visionmedia-Growl, shesh :p, fixed to lowercase
