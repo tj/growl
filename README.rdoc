@@ -3,6 +3,39 @@
 
 Ruby growlnotify 'bindings'.
 
+== Examples
+
+  notification = Growl.new
+  notification.message = 'Hello World'
+  notification.sticky!
+  notification.icon = :jpeg
+  notification.run
+
+  # OR
+
+  Growl {
+    self.message = 'Hello World'
+    self.icon = :jpeg
+    sticky!
+  }
+
+  # OR
+
+  Growl do |n|
+    n.message = 'Hello World'
+    n.icon = :jpeg
+    n.stick!
+  end
+
+== Features
+
+* Check availability with Growl#installed?
+* Check dependencies with Growl#version
+* Use images, icon paths, application icons, or file format icons
+* Sticky a notification making it appear until explicitly closed 
+* Set notification priority 
+* Etc (consult growlnotify --help) 
+
 == License:
 
 (The MIT License)
