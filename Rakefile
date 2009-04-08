@@ -5,7 +5,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new "Growl", Growl::VERSION do |p|
+Echoe.new "growl", Growl::VERSION do |p|
   p.author = "TJ Holowaychuk"
   p.email = "tj@vision-media.ca"
   p.summary = "growlnotify bindings"
