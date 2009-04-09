@@ -34,6 +34,10 @@ module Growl
   end
   module_function :notify
   
+  #--
+  # Generate notify_STATUS methods.
+  #++
+  
   %w( ok info warning error ).each do |type|
     define_method :"notify_#{type}" do |message, *args|
       options = args.first || {}
