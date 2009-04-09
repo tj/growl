@@ -53,6 +53,18 @@ Ruby growlnotify 'bindings'.
 * Convenience methods such as notify_ok, notify_warning, notify_error, and notify_info
 * Etc (consult growlnotify --help) 
 
+== Known Issues
+
+It seems that growlnotify will essentially ignore or block excessive usage
+of the notifications so you may need to do something like below if you are
+calling many in sequence:
+
+  notify 'Something'; sleep 0.2
+  notify_ok 'Updated'; sleep 0.2
+  notify_info 'You have new mail'; sleep 0.2
+  notify_warning 'Merged required'; sleep 0.2
+  notify_error 'Oh Noes!'; sleep 0.2
+
 == License:
 
 (The MIT License)
