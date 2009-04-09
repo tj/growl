@@ -1,4 +1,10 @@
 
+=== 0.0.6 / 2009-04-09
+
+* Added #notify_{ok,info,warning,error} and images
+* Added examples and updated docs
+* Refactored Growl::Base.switch
+
 === 0.0.5 / 2009-04-08
 
 * Now returning nil when trying to instantiate Growl when not installed

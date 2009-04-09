@@ -1,6 +1,11 @@
+examples/growl.rb
 Growl.gemspec
 History.rdoc
 lib/growl/growl.rb
+lib/growl/images/error.png
+lib/growl/images/info.png
+lib/growl/images/ok.png
+lib/growl/images/warning.png
 lib/growl/version.rb
 lib/growl.rb
 Manifest
