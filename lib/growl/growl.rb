@@ -9,12 +9,6 @@ module Growl
   
   class Error < StandardError; end
   
-  #--
-  # Singleton methods
-  #++
-  
-  module_function
-  
   ##
   # Display a growl notification +message+, with +options+ 
   # documented below. Alternatively a +block+ may be passed
@@ -35,35 +29,45 @@ module Growl
   
   def notify message = nil, options = {}, &block
     return unless installed?
-    options.merge! :message => message unless block
+    options.merge! :message => message if message
     Growl.new(options, &block).run
+  end
+  module_function :notify
+  
+  %w( ok info warning error ).each do |type|
+    define_method :"notify_#{type}" do |message, *args|
+      options = args.first || {}
+      image = File.join File.expand_path(File.dirname(__FILE__)), 'images', "#{type}.png"
+      notify message, options.merge(:image => image)
+    end
+    module_function :"notify_#{type}"
   end
   
   ##
   # Execute +args+ against the binary.
   
-  def exec *args
+  def self.exec *args
     Kernel.system BIN, *args
   end
   
   ##
   # Return the version triple of the binary.
   
-  def version
+  def self.version
     @version ||= `#{BIN} --version`.split[1]
   end
   
   ##
   # Check if the binary is installed and accessable.
   
-  def installed?
+  def self.installed?
     !! version
   end
   
   ##
   # Return an instance of Growl::Base or nil when not installed.
   
-  def new *args, &block
+  def self.new *args, &block
     return unless installed?
     Base.new *args, &block
   end

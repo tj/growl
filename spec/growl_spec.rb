@@ -34,6 +34,14 @@ describe Growl do
     end
   end
   
+  %w( ok info warning error ).each do |type|
+    describe "#notify_#{type}" do
+      it "should display #{type} notifications" do
+        Growl.send(:"notify_#{type}", "Hello", :title => type).should be_true
+      end
+    end
+  end
+  
   describe "#run" do
     it "should fail when no message is present" do
       lambda { Growl.new.run }.should raise_error(Growl::Error, /message required/)
