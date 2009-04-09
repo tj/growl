@@ -124,8 +124,7 @@ module Growl
     def self.switch name
       ivar = :"@#{name}"
       (@switches ||= []) << name
-      define_method(:"#{name}")  { instance_variable_get(ivar) }
-      define_method(:"#{name}=") { |value| instance_variable_set(ivar, value) }
+      attr_accessor :"#{name}"
       define_method(:"#{name}?") { !! instance_variable_get(ivar) }
       define_method(:"#{name}!") { instance_variable_set(ivar, true) }
     end
