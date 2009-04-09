@@ -9,11 +9,11 @@ Ruby growlnotify 'bindings'.
   notification.message = 'Hello World'
   notification.sticky!
   notification.icon = :jpeg
-  notification.run
+  notification.run if Growl.installed?
 
   # OR
 
-  Growl {
+  Growl.notify {
     self.message = 'Hello World'
     self.icon = :jpeg
     sticky!
@@ -21,7 +21,7 @@ Ruby growlnotify 'bindings'.
 
   # OR
 
-  Growl do |n|
+  Growl.notify do |n|
     n.message = 'Hello World'
     n.icon = :jpeg
     n.stick!
@@ -29,15 +29,28 @@ Ruby growlnotify 'bindings'.
 
   # OR
 
-  Growl :message => 'Invoked via Growl with hash', :icon => 'jpeg', :title => 'Growl
+  Growl.notify 'Foo', :icon => :jpeg, :title => 'Growl'
+
+  # OR
+
+  include Growl
+  notify 'Email received', :sticky => true
+
+  #Convenience methods
+
+  notify_ok 'Deployment successful'
+  notify_info 'Email received'
+  notify_warning 'Merge required'
+  notify_error 'Failed to send email', :sticky => true
 
 == Features
 
-* Check availability with Growl#installed?
-* Check dependencies with Growl#version
+* Check availability with Growl.installed?
+* Check dependencies with Growl.version
 * Use images, icon paths, application icons, or file format icons
 * Sticky a notification making it appear until explicitly closed 
 * Set notification priority 
+* Convenience methods such as notify_ok, notify_warning, notify_error, and notify_info
 * Etc (consult growlnotify --help) 
 
 == License:

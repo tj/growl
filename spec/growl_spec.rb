@@ -81,7 +81,7 @@ describe Growl do
   describe "#appIcon" do
     it "should use an application for the icon" do
       @growl.appIcon = 'Safari'
-      @growl.message = 'Safari Icon'
+      @growl.message = 'Safari icon'
       @growl.run.should be_true
     end
   end
@@ -89,7 +89,7 @@ describe Growl do
   describe "#iconpath" do
     it "should use a path for the icon" do
       @growl.iconpath = fixture 'icon.icns'
-      @growl.message = 'Custom Icon'
+      @growl.message = 'Custom icon'
       @growl.run.should be_true
     end
   end
@@ -98,6 +98,12 @@ describe Growl do
     it "should use an icon based on a file type" do
       @growl.icon = 'jpeg'
       @growl.message = 'Jpeg Icon'
+      @growl.run.should be_true
+    end
+    
+    it "should allow symbols" do
+      @growl.icon = :jpeg
+      @growl.message = 'Jpeg icon with symbol'
       @growl.run.should be_true
     end
   end

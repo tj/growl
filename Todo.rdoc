@@ -1,6 +1,7 @@
 
 == Major:
 
+* Fix priority, and have constants
 * Switch aliases since appIcon is ... lame
 * Allow the icon switch to be an image, icon, or extension. This would be much more usable than --icon, --image, and --iconpath
 * Docs for installing growlnotify

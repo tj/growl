@@ -28,7 +28,7 @@ module Growl
   #
   
   def notify message = nil, options = {}, &block
-    return unless installed?
+    return unless Growl.installed?
     options.merge! :message => message if message
     Growl.new(options, &block).run
   end
@@ -65,7 +65,7 @@ module Growl
   # Check if the binary is installed and accessable.
   
   def self.installed?
-    !! version
+    version
   end
   
   ##
@@ -110,7 +110,7 @@ module Growl
       self.class.switches.each do |switch|
         if send(:"#{switch}?")
           args << "--#{switch}"
-          args << send(switch) if send(switch).is_a? String
+          args << send(switch).to_s if send(switch) && !(TrueClass === send(switch))
         end
       end
       Growl.exec *args
@@ -133,7 +133,7 @@ module Growl
       ivar = :"@#{name}"
       (@switches ||= []) << name
       attr_accessor :"#{name}"
-      define_method(:"#{name}?") { !! instance_variable_get(ivar) }
+      define_method(:"#{name}?") { instance_variable_get(ivar) }
       define_method(:"#{name}!") { instance_variable_set(ivar, true) }
     end
     
