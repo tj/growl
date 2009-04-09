@@ -16,6 +16,30 @@ module Growl
   module_function
   
   ##
+  # Display a growl notification +message+, with +options+ 
+  # documented below. Alternatively a +block+ may be passed
+  # which is then instance evaluated or yielded to the block.
+  #
+  # This method is simply returns nil when growlnotify
+  # is not installed, as growl notifications should never
+  # be the only means of communication between your application
+  # and your user.
+  #
+  # === Examples
+  #    
+  #   Growl.notify 'Hello'
+  #   Growl.notify 'Hello', :title => 'TJ Says:', :sticky => true
+  #   Growl.notify { |n| n.message = 'Hello'; n.sticky! }
+  #   Growl.notify { self.message = 'Hello'; sticky! }
+  #
+  
+  def notify message = nil, options = {}, &block
+    return unless installed?
+    options.merge! :message => message unless block
+    Growl.new(options, &block).run
+  end
+  
+  ##
   # Execute +args+ against the binary.
   
   def exec *args
@@ -136,9 +160,4 @@ module Growl
 
   end
 
-end
-
-def Growl options = {}, &block
-  return unless Growl.installed?
-  Growl.new(options, &block).run
 end

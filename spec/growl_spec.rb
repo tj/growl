@@ -18,19 +18,19 @@ describe Growl do
     @growl.message = 'Hello World'
   end
   
-  describe "#Growl" do
+  describe "#notify" do
     it "should accept a block, running immediately after" do
-      Growl { |n| n.message = 'Invoked via Growl' }
+      Growl.notify { |n| n.message = 'Invoked via Growl' }.should be_true
     end
     
     it "should accept a hash" do
-      Growl :message => 'Invoked via Growl with hash', :icon => 'jpeg', :title => 'Growl'
+      Growl.notify('Invoked via Growl with hash', :icon => 'jpeg', :title => 'Growl').should be_true
     end
     
     it "should return nil when not installed" do
       Growl.stub!(:installed?).and_return(false)
       Growl.new.should be_nil
-      lambda { Growl :message => 'I should never show :)' }.should_not raise_error
+      lambda { Growl.notify 'I should never show :)' }.should_not raise_error
     end
   end
   
