@@ -56,8 +56,8 @@ Ruby growlnotify 'bindings'.
 == Known Issues
 
 It seems that growlnotify will essentially ignore or block excessive usage
-of the notifications so you may need to do something like below if you are
-calling many in sequence:
+of the notifications at random. To prevent this you may need to do something like
+below if you are calling many in sequence:
 
   notify 'Something'; sleep 0.2
   notify_ok 'Updated'; sleep 0.2
