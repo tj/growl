@@ -123,9 +123,9 @@ module Growl
     #
     #  switch :sticky
     #
-    #  @growl.sticky!
+    #  @growl.sticky!         # => true
     #  @growl.sticky?         # => true
-    #  @growl.sticky = false
+    #  @growl.sticky = false  # => false
     #  @growl.sticky?         # => false
     #
     
