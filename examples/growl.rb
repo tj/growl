@@ -22,9 +22,9 @@ end
 
 include Growl
 
-notify 'Whoop', :appIcon => 'Safari'
-notify 'Image processing complete', :icon => :jpeg
-notify 'Kicks ass!', :title => 'Growl', :iconpath => iconpath
-notify_info 'New email received'
-notify_ok 'Deployment complete' 
-notify_error 'Deployment failure'
+notify 'Whoop', :appIcon => 'Safari' ; sleep 0.2
+notify 'Image processing complete', :icon => :jpeg ; sleep 0.2
+notify 'Kicks ass!', :title => 'Growl', :iconpath => iconpath ; sleep 0.2
+notify_info 'New email received' ; sleep 0.2
+notify_ok 'Deployment complete'  ; sleep 0.2
+notify_error 'Deployment failure' ; sleep 0.2
