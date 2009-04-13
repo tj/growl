@@ -30,6 +30,7 @@ module Growl
   def notify message = nil, options = {}, &block
     return unless Growl.installed?
     options.merge! :message => message if message
+    Growl.normalize_icon! options
     Growl.new(options, &block).run
   end
   module_function :notify
@@ -74,6 +75,37 @@ module Growl
   def self.new *args, &block
     return unless installed?
     Base.new *args, &block
+  end
+  
+  ##
+  # Normalize the icon option in +options+. This performs
+  # the following operations in order to allow for the :icon
+  # key to work with a variety of values:
+  #
+  # * path to an icon sets :iconpath
+  # * path to an image sets :image
+  # * capitalized word sets :appIcon
+  # * filename uses extname as :icon
+  # * otherwise treated as :icon
+  
+  def self.normalize_icon! options = {}
+    return unless options.include? :icon
+    icon = options.delete(:icon).to_s
+    if File.exists? icon
+      if File.extname(icon) == '.icns'
+        options[:iconpath] = icon
+      else
+        options[:image] = icon
+      end
+    else
+      if icon.capitalize == icon
+        options[:appIcon] = icon
+      elsif !(ext = File.extname(icon)).empty?
+        options[:icon] = ext[1..-1]
+      else
+        options[:icon] = icon
+      end
+    end
   end
   
   #--

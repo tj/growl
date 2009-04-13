@@ -22,9 +22,14 @@ end
 
 include Growl
 
-notify 'Whoop', :appIcon => 'Safari' ; sleep 0.2
-notify 'Image processing complete', :icon => :jpeg ; sleep 0.2
-notify 'Kicks ass!', :title => 'Growl', :iconpath => iconpath ; sleep 0.2
-notify_info 'New email received' ; sleep 0.2
-notify_ok 'Deployment complete'  ; sleep 0.2
-notify_error 'Deployment failure' ; sleep 0.2
+# notify 'Image processing complete', :icon => :jpeg ; sleep 0.2
+# notify 'Kicks ass!', :title => 'Growl', :iconpath => iconpath ; sleep 0.2
+# notify_info 'New email received' ; sleep 0.2
+# notify_ok 'Deployment complete'  ; sleep 0.2
+# notify_error 'Deployment failure' ; sleep 0.2
+
+notify 'Safari icon', :icon => :Safari ; sleep 0.2
+notify 'Jpeg icon', :icon => :jpeg ; sleep 0.2
+notify 'Image icon', :icon => imagepath ; sleep 0.2
+notify 'Icns icon', :icon => iconpath ; sleep 0.2
+notify 'Path extname icon', :icon => 'foo.rb' ; sleep 0.2

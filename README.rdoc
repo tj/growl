@@ -43,6 +43,17 @@ Ruby growlnotify 'bindings'.
   notify_warning 'Merge required'
   notify_error 'Failed to send email', :sticky => true
 
+== Normaized Icons
+
+The :icon option key is automatically normalized when you use any of the Growl#notify
+methods, this removes the need to explicitly use :appIcon, :image, etc.
+
+  notify 'App icon', :icon => :Safari
+  notify 'Jpeg icon', :icon => :jpeg 
+  notify 'Image icon', :icon => 'path/to/image.png' 
+  notify 'Icns icon', :icon => 'path/to/icon.icns'
+  notify 'Path extname icon', :icon => 'foo.rb' 
+
 == Features
 
 * Check availability with Growl.installed?
