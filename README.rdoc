@@ -62,7 +62,11 @@ methods, this removes the need to explicitly use :appIcon, :image, etc.
 * Sticky a notification making it appear until explicitly closed 
 * Set notification priority 
 * Convenience methods such as notify_ok, notify_warning, notify_error, and notify_info
-* Etc (consult growlnotify --help) 
+* Etc (consult growlnotify --help)
+
+== Installing growlnotify
+
+Visit http://growl.info/documentation.php for installation help. 
 
 == Known Issues
 
