@@ -65,6 +65,11 @@ below if you are calling many in sequence:
   notify_warning 'Merged required'; sleep 0.2
   notify_error 'Oh Noes!'; sleep 0.2
 
+== Contribute
+
+Fork / send a pull request or submit a ticket at:
+http://visionmedia.lighthouseapp.com/projects/29126-growl
+
 == License:
 
 (The MIT License)
