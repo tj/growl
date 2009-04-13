@@ -1,4 +1,10 @@
 
+=== 1.0.0 / 2009-04-13
+
+* Added new examples
+* Added growlnotify install docs [#3]
+* Changed; Growl#notify now normalizes the :icon option key [#2] (checkout README)
+
 === 0.0.6 / 2009-04-09
 
 * Added #notify_{ok,info,warning,error} and images

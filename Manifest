@@ -1,5 +1,5 @@
 examples/growl.rb
-Growl.gemspec
+growl.gemspec
 History.rdoc
 lib/growl/growl.rb
 lib/growl/images/error.png
@@ -18,4 +18,3 @@ spec/spec_helper.rb
 tasks/docs.rake
 tasks/gemspec.rake
 tasks/spec.rake
-Todo.rdoc
