@@ -83,7 +83,7 @@ below if you are calling many in sequence:
 == Contribute
 
 Fork / send a pull request or submit a ticket at:
-http://visionmedia.lighthouseapp.com/projects/29126-growl
+http://github.com/visionmedia/growl/issues
 
 == License:
 
