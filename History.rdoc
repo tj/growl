@@ -1,4 +1,9 @@
 
+=== 1.0.2 / 2009-04-19
+
+* Added new gemspec
+* Removed capitalized gemspec name causing build issues
+
 === 1.0.1 / 2009-04-19
 
 * Changed url for ticketing system
