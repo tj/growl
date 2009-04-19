@@ -1,4 +1,8 @@
 
+=== 1.0.1 / 2009-04-19
+
+* Changed url for ticketing system
+
 === 1.0.0 / 2009-04-13
 
 * Added new examples

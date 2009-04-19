@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{growl}
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["TJ Holowaychuk"]
-  s.date = %q{2009-04-13}
+  s.date = %q{2009-04-19}
   s.description = %q{growlnotify bindings}
   s.email = %q{tj@vision-media.ca}
   s.extra_rdoc_files = ["lib/growl/growl.rb", "lib/growl/images/error.png", "lib/growl/images/info.png", "lib/growl/images/ok.png", "lib/growl/images/warning.png", "lib/growl/version.rb", "lib/growl.rb", "README.rdoc", "tasks/docs.rake", "tasks/gemspec.rake", "tasks/spec.rake"]
