@@ -66,7 +66,7 @@ module Growl
   # Check if the binary is installed and accessable.
   
   def self.installed?
-    version
+    version rescue false
   end
   
   ##
