@@ -2,12 +2,17 @@
 $:.unshift File.dirname(__FILE__) + '/../lib'
 require 'growl'
 
+Growl.bin_path = ARGV[0] unless ARGV.empty?
+
+puts "using growlnotify located at #{Growl.bin_path}" unless ARGV.empty?
+
 puts "growlnotify version #{Growl.version} installed"
 
 imagepath = File.dirname(__FILE__) + '/../spec/fixtures/image.png'
 iconpath = File.dirname(__FILE__) + '/../spec/fixtures/icon.icns'
 
 include Growl
+
 
 notify_info 'New email received', :sticky => true, :title => 'Some app'; sleep 0.2
 notify_ok 'Deployment complete'                   ; sleep 0.2

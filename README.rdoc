@@ -43,30 +43,38 @@ Ruby growlnotify 'bindings'.
   notify_warning 'Merge required'
   notify_error 'Failed to send email', :sticky => true
 
+== Custom path to growlnotify
+
+If needed you can set a path to the binary with:
+
+  Growl.bin_path = '~/my/path/to/growlnotify'
+
+right after you require the growl library.
+
 == Normaized Icons
 
 The :icon option key is automatically normalized when you use any of the Growl#notify
 methods, this removes the need to explicitly use :appIcon, :image, etc.
 
   notify 'App icon', :icon => :Safari
-  notify 'Jpeg icon', :icon => :jpeg 
-  notify 'Image icon', :icon => 'path/to/image.png' 
+  notify 'Jpeg icon', :icon => :jpeg
+  notify 'Image icon', :icon => 'path/to/image.png'
   notify 'Icns icon', :icon => 'path/to/icon.icns'
-  notify 'Path extname icon', :icon => 'foo.rb' 
+  notify 'Path extname icon', :icon => 'foo.rb'
 
 == Features
 
 * Check availability with Growl.installed?
 * Check dependencies with Growl.version
 * Use images, icon paths, application icons, or file format icons
-* Sticky a notification making it appear until explicitly closed 
-* Set notification priority 
+* Sticky a notification making it appear until explicitly closed
+* Set notification priority
 * Convenience methods such as notify_ok, notify_warning, notify_error, and notify_info
 * Etc (consult growlnotify --help)
 
 == Installing growlnotify
 
-Visit http://growl.info/documentation.php for installation help. 
+Visit http://growl.info/documentation.php for installation help.
 
 == Known Issues
 
