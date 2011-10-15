@@ -1,16 +1,16 @@
 
 module Growl
-  
-  BIN = 'growlnotify'
-  
+
+  @@path = 'growlnotify'
+
   #--
   # Exceptions
   #++
-  
+
   class Error < StandardError; end
-  
+
   ##
-  # Display a growl notification +message+, with +options+ 
+  # Display a growl notification +message+, with +options+
   # documented below. Alternatively a +block+ may be passed
   # which is then instance evaluated or yielded to the block.
   #
@@ -20,13 +20,13 @@ module Growl
   # and your user.
   #
   # === Examples
-  #    
+  #
   #   Growl.notify 'Hello'
   #   Growl.notify 'Hello', :title => 'TJ Says:', :sticky => true
   #   Growl.notify { |n| n.message = 'Hello'; n.sticky! }
   #   Growl.notify { self.message = 'Hello'; sticky! }
   #
-  
+
   def notify message = nil, options = {}, &block
     return unless Growl.installed?
     options.merge! :message => message if message
@@ -34,11 +34,11 @@ module Growl
     Growl.new(options, &block).run
   end
   module_function :notify
-  
+
   #--
   # Generate notify_STATUS methods.
   #++
-  
+
   %w( ok info warning error ).each do |type|
     define_method :"notify_#{type}" do |message, *args|
       options = args.first || {}
@@ -47,36 +47,52 @@ module Growl
     end
     module_function :"notify_#{type}"
   end
-  
+
   ##
   # Execute +args+ against the binary.
-  
+
   def self.exec *args
-    Kernel.system BIN, *args
+    Kernel.system @@path, *args
   end
-  
+
+  ##
+  # Specify +path+ to the growlnotify binary
+  # useful if you're bundling it with your application
+  # and don't want to force your user to install
+  # growlnotify package
+
+  def bin_path= path
+    @@path = File.expand_path path
+  end
+  module_function :bin_path=
+
+  def bin_path
+    @@path
+  end
+  module_function :bin_path
+
   ##
   # Return the version triple of the binary.
-  
+
   def self.version
-    @version ||= `#{BIN} --version`.split[1]
+    @version ||= `#{@@path} --version`.split[1]
   end
-  
+
   ##
   # Check if the binary is installed and accessable.
-  
+
   def self.installed?
     version rescue false
   end
-  
+
   ##
   # Return an instance of Growl::Base or nil when not installed.
-  
+
   def self.new *args, &block
     return unless installed?
     Base.new *args, &block
   end
-  
+
   ##
   # Normalize the icon option in +options+. This performs
   # the following operations in order to allow for the :icon
@@ -87,7 +103,7 @@ module Growl
   # * capitalized word sets :appIcon
   # * filename uses extname as :icon
   # * otherwise treated as :icon
-  
+
   def self.normalize_icon! options = {}
     return unless options.include? :icon
     icon = options.delete(:icon).to_s
@@ -107,18 +123,18 @@ module Growl
       end
     end
   end
-  
+
   #--
   # Growl base
   #++
-  
+
   class Base
     attr_reader :args
-    
+
     ##
     # Initialize with optional +block+, which is then
     # instance evaled or yielded depending on the blocks arity.
-    
+
     def initialize options = {}, &block
       @args = []
       if block_given?
@@ -133,10 +149,10 @@ module Growl
         end
       end
     end
-    
+
     ##
     # Run the notification, only --message is required.
-    
+
     def run
       raise Error, 'message required' unless message
       self.class.switches.each do |switch|
@@ -147,7 +163,7 @@ module Growl
       end
       Growl.exec *args
     end
-    
+
     ##
     # Define a switch +name+.
     #
@@ -160,7 +176,7 @@ module Growl
     #  @growl.sticky = false  # => false
     #  @growl.sticky?         # => false
     #
-    
+
     def self.switch name
       ivar = :"@#{name}"
       (@switches ||= []) << name
@@ -168,18 +184,18 @@ module Growl
       define_method(:"#{name}?") { instance_variable_get(ivar) }
       define_method(:"#{name}!") { instance_variable_set(ivar, true) }
     end
-    
+
     ##
     # Return array of available switch symbols.
-    
+
     def self.switches
       @switches
     end
-    
+
     #--
     # Switches
     #++
-    
+
     switch :title
     switch :message
     switch :sticky
