@@ -1,4 +1,3 @@
-
 module Growl
 
   @@path = 'growlnotify'
@@ -212,6 +211,7 @@ module Growl
     switch :port
     switch :auth
     switch :crypt
+    switch :url
 
   end
 
