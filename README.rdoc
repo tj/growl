@@ -1,4 +1,3 @@
-
 = Growl
 
 Ruby growlnotify 'bindings'.
@@ -43,6 +42,19 @@ Ruby growlnotify 'bindings'.
   notify_warning 'Merge required'
   notify_error 'Failed to send email', :sticky => true
 
+== Turn a Growl notification into an active url
+
+  notification = Growl.new
+  notification.message = 'I am an active url.'
+  notification.url = 'http://www.example.com'
+  notification.sticky!
+  notification.run if Growl.installed?
+
+Now when you launch your notification the Growl message will be an active url
+to take you to http://www.example.com as if you had run from the command line:
+
+  growlnotify -m 'I am an active url' --url 'http://www.example.com'
+
 == Custom path to growlnotify
 
 If needed you can set a path to the binary with:
@@ -51,7 +63,7 @@ If needed you can set a path to the binary with:
 
 right after you require the growl library.
 
-== Normaized Icons
+== Normalized Icons
 
 The :icon option key is automatically normalized when you use any of the Growl#notify
 methods, this removes the need to explicitly use :appIcon, :image, etc.
@@ -75,6 +87,7 @@ methods, this removes the need to explicitly use :appIcon, :image, etc.
 == Installing growlnotify
 
 Visit http://growl.info/documentation.php for installation help.
+Visit http://growl.info/downloads for download.
 
 == Known Issues
 
