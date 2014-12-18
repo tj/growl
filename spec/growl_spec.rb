@@ -71,6 +71,14 @@ describe Growl do
     end
   end
 
+  describe "#url" do
+    it "should add message and make it a url" do
+      @growl.message = 'rubygems website'
+      @growl.url = 'http://www.rubygems.org'
+      @growl.run.should be_truthy
+    end
+  end
+
   describe "#title" do
     it "should add a title" do
       @growl.title = 'Im a title'
