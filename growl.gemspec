@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = %q{growl}
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{growlnotify bindings}
+  s.license = 'MIT'
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
