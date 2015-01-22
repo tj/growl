@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["lib/growl/growl.rb", "lib/growl/images/error.png", "lib/growl/images/info.png", "lib/growl/images/ok.png", "lib/growl/images/warning.png", "lib/growl/version.rb", "lib/growl.rb", "README.rdoc", "tasks/docs.rake", "tasks/gemspec.rake", "tasks/spec.rake"]
   s.files = ["examples/growl.rb", "growl.gemspec", "History.rdoc", "lib/growl/growl.rb", "lib/growl/images/error.png", "lib/growl/images/info.png", "lib/growl/images/ok.png", "lib/growl/images/warning.png", "lib/growl/version.rb", "lib/growl.rb", "Manifest", "Rakefile", "README.rdoc", "spec/fixtures/icon.icns", "spec/fixtures/image.png", "spec/growl_spec.rb", "spec/spec_helper.rb", "tasks/docs.rake", "tasks/gemspec.rake", "tasks/spec.rake"]
   s.homepage = %q{http://github.com/visionmedia/growl}
+  s.license = 'MIT'
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Growl", "--main", "README.rdoc"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{growl}
